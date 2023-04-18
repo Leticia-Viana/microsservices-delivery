@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import javax.validation.constraints.*;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,8 +14,13 @@ import java.util.Date;
 @NoArgsConstructor
 public class OrdersDTORequest {
 
+    @NotBlank(message = "Enter the customer's name, it cannot be null")
     private String clientName;
 
+    @NotEmpty(message = "Enter the customer's address, it cannot be null")
     private String deliveryAddress;
+
+    @NotEmpty(message = "Enter the products, it cannot be null")
+    private List<ProductsRequestDTO> listProducts;
 
 }

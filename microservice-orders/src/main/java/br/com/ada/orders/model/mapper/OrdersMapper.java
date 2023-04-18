@@ -25,6 +25,7 @@ public class OrdersMapper {
         if (Objects.isNull(ordersEntity)) return null;
 
         return  OrdersDTOResponse.builder()
+                .orderId(ordersEntity.getOrderId())
                 .clientName(ordersEntity.getClientName())
                 .deliveryAddress(ordersEntity.getDeliveryAddress())
                 .build();
@@ -38,6 +39,7 @@ public class OrdersMapper {
                 .requestDate(Date.from(Instant.now()))
                 .deliveryAddress(orderDTO.getDeliveryAddress())
                 .clientName(orderDTO.getClientName())
+//                .listProducts(orderDTO.getListProducts())
                 .build();
     }
 

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +29,7 @@ public class OrdersController {
     @Autowired
     private OrdersService ordersService;
     @PostMapping("/insertorder")
-    public ResponseEntity<OrdersDTOResponse> insertOrder(@RequestBody final OrdersDTORequest orderRequest){
+    public ResponseEntity<OrdersDTOResponse> insertOrder(@Valid @RequestBody final OrdersDTORequest orderRequest){
         log.info("- OrdersController --> Initialized insertOrder...");
         return ResponseEntity.status(HttpStatus.CREATED).body(ordersService.saveOrder(orderRequest));
     }
