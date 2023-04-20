@@ -42,6 +42,7 @@ public class OrdersController {
         return ResponseEntity.ok(ordersService.getAllOrders());
     }
 
+    @ApiOperation(value = "Return order by id in database")
     @GetMapping
     public ResponseEntity<OrdersDTOResponse> getOrderById(@PathVariable("id") Long id){
         log.info("- OrdersController --> Initialized getOrderById...");
@@ -52,6 +53,7 @@ public class OrdersController {
         }
     }
 
+    @ApiOperation(value = "Update order by id in database")
     @PatchMapping("{id}")
     public ResponseEntity<OrdersDTOResponse> updateOrder(@PathVariable("id") Long id, @RequestBody OrdersDTORequest ordersDTORequest){
         log.info("- OrdersController --> Initialized updateOrder...");
@@ -62,6 +64,7 @@ public class OrdersController {
         }
     }
 
+    @ApiOperation(value = "Delete order by id in database")
     @DeleteMapping("{id}")
     public ResponseEntity<OrdersDTOResponse> deleteOrder(@PathVariable("id") Long id){
         log.info("- OrdersController --> Initialized updateOrder...");
