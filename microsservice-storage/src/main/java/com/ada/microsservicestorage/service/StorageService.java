@@ -31,14 +31,15 @@ public class StorageService {
     public ProductStorageResponseDTO addProduct(ProductAddRequestDTO productAddRequestDTO) {
         log.info("- StorageService --> Initialized addProduct...");
 
-        Optional<ProductEntity> productEntity = Optional.of(storageRepository.getReferenceById(productAddRequestDTO.getIdProduct()));
+        Optional<ProductEntity> productEntity = storageRepository.findById(productAddRequestDTO.getIdProduct());
         ProductEntity product = null;
 
         if(Optionals.isAnyPresent(productEntity)){
             product = productEntity.get();
             product.setQtdd(product.getQtdd() + productAddRequestDTO.getQtdd());
         } else {
-            ProductResponseDTO productResponseDTO = productClient.getProduct(productAddRequestDTO.getIdProduct());
+            Long id = productAddRequestDTO.getIdProduct();
+            ProductResponseDTO productResponseDTO = productClient.getProduct(id);
             product = productMapper.toEntity(productResponseDTO);
             product.setQtdd(productAddRequestDTO.getQtdd());
         }
