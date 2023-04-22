@@ -13,11 +13,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 public class ProductAddRequestDTO {
-    @NotEmpty(message = "Preenchimento Obrigatório")
-    @NotNull(message = "Preenchimento Obrigatório")
     private Long idProduct;
 
-    @NotEmpty(message = "Preenchimento Obrigatório")
-    @NotNull(message = "Preenchimento Obrigatório")
     private Long qtdd;
 }

@@ -9,15 +9,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mymoney" />
         <module name="products" />
+        <module name="microsservice-storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="microsservice-storage" target="19" />
       <module name="mymoney" target="11" />
       <module name="products" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="microsservice-storage" options="-parameters" />
       <module name="mymoney" options="-parameters" />
       <module name="products" options="-parameters" />
     </option>
