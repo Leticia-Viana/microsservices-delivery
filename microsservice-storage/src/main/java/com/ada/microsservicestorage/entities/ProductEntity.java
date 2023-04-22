@@ -1,16 +1,11 @@
 package com.ada.microsservicestorage.entities;
 
-import com.ada.microsservicestorage.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Data
 @AllArgsConstructor

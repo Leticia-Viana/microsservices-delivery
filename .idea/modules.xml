@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/microsservice-storage/microsservice-storage.iml" filepath="$PROJECT_DIR$/microsservice-storage/microsservice-storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/microsservices-delivery.iml" filepath="$PROJECT_DIR$/.idea/microsservices-delivery.iml" />
       <module fileurl="file://$PROJECT_DIR$/microsservices-delivery/mymoney.iml" filepath="$PROJECT_DIR$/microsservices-delivery/mymoney.iml" />
       <module fileurl="file://$PROJECT_DIR$/microsservices-products/products.iml" filepath="$PROJECT_DIR$/microsservices-products/products.iml" />
