@@ -17,12 +17,14 @@ import lombok.NoArgsConstructor;
 public class DeliveriesRequestDTO {
 
 		
-	@NotBlank(message = "Enter the customer's name, it cannot be null")
-    private String clientName;
+//	@NotBlank(message = "Enter the customer's name, it cannot be null")
+//    private String clientName;
+//
+//    @NotEmpty(message = "Enter the customer's address, it cannot be null")
+//    private String deliveryAddress;
+//
+//    @NotEmpty(message = "Enter the products, it cannot be null")
+//    private List<ProductsRequestDTO> listProducts;
 
-    @NotEmpty(message = "Enter the customer's address, it cannot be null")
-    private String deliveryAddress;
-	
-    @NotEmpty(message = "Enter the products, it cannot be null")
-    private List<ProductsRequestDTO> listProducts;
+    private OrderRequestDto orderRequestDto;
 }

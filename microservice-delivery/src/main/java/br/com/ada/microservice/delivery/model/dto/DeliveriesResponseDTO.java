@@ -11,8 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeliveriesResponseDTO {
 
-	private String deliver;
-	private String list_orders;
-	private String deliveryAddress;
-	private String clientName;
+	private Long id;
 }

@@ -1,15 +1,14 @@
 package br.com.ada.microservice.delivery.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,8 +21,9 @@ public class DeliveriesEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	private String clientName;
-	private String deliveryAddress;
+	private String status;
+	@OneToMany(mappedBy = "deliveriesEntity", fetch = FetchType.EAGER)
+	private List<OrderEntity> orders = new ArrayList<>();
+	private Boolean isFull;
 	
 }
