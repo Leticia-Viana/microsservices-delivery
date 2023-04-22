@@ -2,7 +2,6 @@ package br.com.ada.orders.service.interfaces;
 
 import br.com.ada.orders.model.dto.OrdersDTORequest;
 import br.com.ada.orders.model.dto.OrdersDTOResponse;
-import br.com.ada.orders.model.entity.OrdersEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
