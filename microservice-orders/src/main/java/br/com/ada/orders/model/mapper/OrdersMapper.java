@@ -39,7 +39,7 @@ public class OrdersMapper {
                 .requestDate(Date.from(Instant.now()))
                 .deliveryAddress(orderDTO.getDeliveryAddress())
                 .clientName(orderDTO.getClientName())
-//                .listProducts(orderDTO.getListProducts())
+                .listProducts(orderDTO.getListProducts())
                 .build();
     }
 

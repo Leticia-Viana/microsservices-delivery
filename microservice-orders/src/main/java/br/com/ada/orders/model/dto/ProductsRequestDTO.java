@@ -2,9 +2,7 @@ package br.com.ada.orders.model.dto;
 
 public class ProductsRequestDTO {
 
-    private String productName;
+    private String name;
 
-    private String productCategory;
-
-    private Long quantityOfProducts;
+    private Long quantity;
 }

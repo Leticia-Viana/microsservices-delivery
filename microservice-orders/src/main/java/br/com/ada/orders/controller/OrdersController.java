@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -41,21 +42,37 @@ public class OrdersController {
         return ResponseEntity.ok(ordersService.getAllOrders());
     }
 
+    @ApiOperation(value = "Return order by id in database")
     @GetMapping
     public ResponseEntity<OrdersDTOResponse> getOrderById(@PathVariable("id") Long id){
         log.info("- OrdersController --> Initialized getOrderById...");
-
-        return ResponseEntity.ok(ordersService.getOrderById(id));
+        try {
+            return ResponseEntity.ok(ordersService.getOrderById(id));
+        }catch (EntityNotFoundException exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
+    @ApiOperation(value = "Update order by id in database")
     @PatchMapping("{id}")
     public ResponseEntity<OrdersDTOResponse> updateOrder(@PathVariable("id") Long id, @RequestBody OrdersDTORequest ordersDTORequest){
-        return ResponseEntity.status(HttpStatus.CREATED).body(ordersService.updateOrder(id, ordersDTORequest));
+        log.info("- OrdersController --> Initialized updateOrder...");
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(ordersService.updateOrder(id, ordersDTORequest));
+        }catch (EntityNotFoundException exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
+    @ApiOperation(value = "Delete order by id in database")
     @DeleteMapping("{id}")
     public ResponseEntity<OrdersDTOResponse> deleteOrder(@PathVariable("id") Long id){
-        ordersService.deleteOrderById(id);
-        return ResponseEntity.noContent().build();
+        log.info("- OrdersController --> Initialized updateOrder...");
+        try {
+            ordersService.deleteOrderById(id);
+            return ResponseEntity.noContent().build();
+        }catch (EntityNotFoundException exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

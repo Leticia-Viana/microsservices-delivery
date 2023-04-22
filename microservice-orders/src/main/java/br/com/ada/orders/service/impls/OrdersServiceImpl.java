@@ -26,7 +26,8 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public OrdersDTOResponse saveOrder(OrdersDTORequest orderRequest) {
         log.info("- OrdersServiceImpl --> Entering order: {} in database" ,orderRequest);
-        ordersRepository.save(ordersMapper.dtoToEntity(orderRequest));
+        OrdersEntity entity = ordersMapper.dtoToEntity(orderRequest);
+        ordersRepository.save(entity);
         return ordersMapper.requestDtoToResponse(orderRequest);
     }
 
@@ -38,6 +39,7 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public OrdersDTOResponse getOrderById(Long id) {
+        log.info("- OrdersServiceImpl --> Get order by id: {} in database", id);
         Optional<OrdersEntity> entityOptional = ordersRepository.findById(id);
         entityOptional.orElseThrow(() -> new EntityNotFoundException("Order not found for id: " + id));
 

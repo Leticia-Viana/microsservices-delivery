@@ -1,5 +1,6 @@
 package br.com.ada.orders.model.dto;
 
+import br.com.ada.orders.model.entity.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +22,6 @@ public class OrdersDTORequest {
     private String deliveryAddress;
 
     @NotEmpty(message = "Enter the products, it cannot be null")
-    private List<ProductsRequestDTO> listProducts;
+    private List<ProductEntity> listProducts;
 
 }
