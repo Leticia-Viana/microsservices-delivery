@@ -2,16 +2,10 @@ package br.com.ada.orders.model.mapper;
 
 import br.com.ada.orders.model.dto.OrdersDTORequest;
 import br.com.ada.orders.model.dto.OrdersDTOResponse;
-import br.com.ada.orders.model.entity.OrdersEntity;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.mapstruct.Mapper;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
+import br.com.ada.orders.model.entity.OrderEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,25 +15,24 @@ import java.util.stream.Collectors;
 @Service
 public class OrdersMapper {
 
-    public OrdersDTOResponse dtoResponseToEntity(OrdersEntity ordersEntity){
-        if (Objects.isNull(ordersEntity)) return null;
+    public OrdersDTOResponse dtoResponseToEntity(OrderEntity orderEntity){
+        if (Objects.isNull(orderEntity)) return null;
 
         return  OrdersDTOResponse.builder()
-                .orderId(ordersEntity.getOrderId())
-                .clientName(ordersEntity.getClientName())
-                .deliveryAddress(ordersEntity.getDeliveryAddress())
+                .orderId(orderEntity.getOrderId())
+                .clientName(orderEntity.getClientName())
+                .deliveryAddress(orderEntity.getDeliveryAddress())
                 .build();
     }
 
-    public OrdersEntity dtoToEntity(OrdersDTORequest orderDTO){
+    public OrderEntity dtoToEntity(OrdersDTORequest orderDTO){
         if (Objects.isNull(orderDTO)) return null;
 
-        return  OrdersEntity.builder()
-                .orderId(Long.MAX_VALUE)
+        return  OrderEntity.builder()
                 .requestDate(Date.from(Instant.now()))
                 .deliveryAddress(orderDTO.getDeliveryAddress())
                 .clientName(orderDTO.getClientName())
-                .listProducts(orderDTO.getListProducts())
+//                .listProducts(orderDTO.getListProducts())
                 .build();
     }
 
@@ -54,10 +47,10 @@ public class OrdersMapper {
         }
     }
 
-    public List<OrdersDTOResponse> listOrdersResponse(List<OrdersEntity> ordersEntityList){
-        if (Objects.isNull(ordersEntityList)) return new ArrayList<>();
+    public List<OrdersDTOResponse> listOrdersResponse(List<OrderEntity> orderEntityList){
+        if (Objects.isNull(orderEntityList)) return new ArrayList<>();
 
-        return ordersEntityList.stream()
+        return orderEntityList.stream()
                 .map(this::dtoResponseToEntity)
                 .collect(Collectors.toList());
     }
