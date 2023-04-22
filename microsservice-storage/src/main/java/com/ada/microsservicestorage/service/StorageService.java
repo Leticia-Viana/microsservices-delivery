@@ -1,5 +1,6 @@
 package com.ada.microsservicestorage.service;
 
+import com.ada.microsservicestorage.dto.DecreseRequestDTO;
 import com.ada.microsservicestorage.dto.ProductAddRequestDTO;
 import com.ada.microsservicestorage.dto.ProductResponseDTO;
 import com.ada.microsservicestorage.dto.ProductStorageResponseDTO;
@@ -33,7 +34,7 @@ public class StorageService {
     public ProductStorageResponseDTO addProduct(ProductAddRequestDTO productAddRequestDTO) {
         log.info("- StorageService --> Initialized addProduct...");
 
-        Optional<ProductEntity> productEntity = Optional.of(storageRepository.getReferenceById(productAddRequestDTO.getIdProduct()));
+        Optional<ProductEntity> productEntity = storageRepository.findById(productAddRequestDTO.getIdProduct());
         ProductEntity product = null;
 
         if(Optionals.isAnyPresent(productEntity)){
@@ -48,7 +49,7 @@ public class StorageService {
         return productMapper.toDto(product);
     }
 
-    public ProductStorageResponseDTO decreaseProduct(Long id, ProductEntity product) throws ProductStorageNotFoundError {
+    public ProductStorageResponseDTO decreaseProduct(Long id, DecreseRequestDTO decreseRequestDTO) throws ProductStorageNotFoundError {
         log.info("- StorageService --> Initialized decreaseProduct...");
 
         Optional<ProductEntity> optional = storageRepository.findById(id);
@@ -56,10 +57,12 @@ public class StorageService {
         if(optional.isPresent()) {
 
             ProductEntity productBD = optional.get();
-            productBD.setName(product.getName());
-            productBD.setCategory(product.getCategory());
-            storageRepository.save(productBD);
-            return productMapper.toDto(product);
+            Long result = productBD.getQtdd() - decreseRequestDTO.getQtdd();
+            if(result < 0){
+                //TODO: Validar retorno
+            }
+            productBD.setQtdd(result);
+            return productMapper.toDto(storageRepository.save(productBD));
         }
         else {
             throw new ProductStorageNotFoundError();
