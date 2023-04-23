@@ -24,7 +24,6 @@ public class OrdersEntity {
     private String clientName;
 
     private String deliveryAddress;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
