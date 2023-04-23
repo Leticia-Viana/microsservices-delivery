@@ -17,7 +17,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     private ProductOrderRepository productOrderRepository;
     @Override
     public void addProductOrder(ProductEntity productEntity, OrderEntity orderEntity, Long quantity) {
-        ProductOrderEntity productOerderEntity = ProductOrderEntity.builder().order(orderEntity).product(productEntity).id(quantity).build();
+        ProductOrderEntity productOerderEntity = ProductOrderEntity.builder().orderEntity(orderEntity).productEntity(productEntity).id(quantity).build();
         productOrderRepository.save(productOerderEntity);
     }
 }

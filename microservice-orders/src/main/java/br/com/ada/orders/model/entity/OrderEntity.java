@@ -17,6 +17,10 @@ import java.util.List;
 @Table(name = "Orders")
 public class OrderEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date requestDate;
 
@@ -24,10 +28,6 @@ public class OrderEntity {
 
     private String deliveryAddress;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
-
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderEntity")
     private List<ProductOrderEntity> listProducts;
 }

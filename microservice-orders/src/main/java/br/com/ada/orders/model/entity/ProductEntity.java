@@ -17,8 +17,7 @@ import javax.persistence.Entity;
 public class ProductEntity {
 
     @Id
-    @Column(name = "idProduct")
-    private Long idProduct;
+    private Long id;
 
     private String nome;
 

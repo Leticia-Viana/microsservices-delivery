@@ -8,8 +8,10 @@ import br.com.ada.orders.model.mapper.OrdersMapper;
 import br.com.ada.orders.repository.OrdersRepository;
 import br.com.ada.orders.repository.ProductRepository;
 import br.com.ada.orders.service.interfaces.OrdersService;
+import br.com.ada.orders.sms.SendNewOrderToDelivey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
@@ -33,6 +35,9 @@ public class OrdersServiceImpl implements OrdersService {
     @Autowired
     private ProductOrderServiceImpl productOrderService;
 
+    @Autowired
+    private SendNewOrderToDelivey sendNewOrderToDelivey;
+
     @Override
     @Transactional
     public OrdersDTOResponse saveOrder(OrdersDTORequest orderRequest) {
@@ -47,7 +52,11 @@ public class OrdersServiceImpl implements OrdersService {
             }
             //todo: chamar api de produtos
         });
-        return ordersMapper.requestDtoToResponse(orderRequest);
+        //todo: chamar api de storage para fazer descrecimo do estoque
+        OrderEntity savedOrder = ordersRepository.save(ordersMapper.dtoToEntity(orderRequest));
+        OrdersDTOResponse dtoResponse = ordersMapper.entityToResponseDTO(savedOrder);
+        sendNewOrderToDelivey.sendOrder(dtoResponse);
+        return dtoResponse;
     }
 
     @Override
@@ -62,7 +71,7 @@ public class OrdersServiceImpl implements OrdersService {
         Optional<OrderEntity> entityOptional = ordersRepository.findById(id);
         entityOptional.orElseThrow(() -> new EntityNotFoundException("Order not found for id: " + id));
 
-        return ordersMapper.dtoResponseToEntity(entityOptional.get());
+        return ordersMapper.entityToResponseDTO(entityOptional.get());
     }
 
     @Override
@@ -74,10 +83,10 @@ public class OrdersServiceImpl implements OrdersService {
         optionalOrder.orElseThrow(() -> new EntityNotFoundException("Order not found."));
 
         OrderEntity entity = ordersMapper.dtoToEntity(ordersDTORequest);
-        entity.setOrderId(id);
+        entity.setId(id);
 
         ordersRepository.save(entity);
-        return ordersMapper.dtoResponseToEntity(entity);
+        return ordersMapper.entityToResponseDTO(entity);
     }
 
     @Override

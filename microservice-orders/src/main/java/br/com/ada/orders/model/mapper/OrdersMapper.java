@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 @Service
 public class OrdersMapper {
 
-    public OrdersDTOResponse dtoResponseToEntity(OrderEntity orderEntity){
+    public OrdersDTOResponse entityToResponseDTO(OrderEntity orderEntity){
         if (Objects.isNull(orderEntity)) return null;
 
         return  OrdersDTOResponse.builder()
-                .orderId(orderEntity.getOrderId())
+                .orderId(orderEntity.getId())
                 .clientName(orderEntity.getClientName())
                 .deliveryAddress(orderEntity.getDeliveryAddress())
                 .build();
@@ -51,7 +51,7 @@ public class OrdersMapper {
         if (Objects.isNull(orderEntityList)) return new ArrayList<>();
 
         return orderEntityList.stream()
-                .map(this::dtoResponseToEntity)
+                .map(this::entityToResponseDTO)
                 .collect(Collectors.toList());
     }
 

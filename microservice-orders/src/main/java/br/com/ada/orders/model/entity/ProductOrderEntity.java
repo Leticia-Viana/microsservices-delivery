@@ -20,12 +20,12 @@ public class ProductOrderEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private OrderEntity order;
+    @JoinColumn(name = "orderEntity_id", nullable = false)
+    private OrderEntity orderEntity;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private ProductEntity product;
+    @JoinColumn(name = "productEntity_id", nullable = false)
+    private ProductEntity productEntity;
 
     private Long quantity;
 

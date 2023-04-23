@@ -26,7 +26,7 @@ public class OrdersEntity {
     private String deliveryAddress;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Long id;
 
     @OneToMany
     private List<ProductEntity> listProducts;
