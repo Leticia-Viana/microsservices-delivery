@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-delivery/microservice-delivery.iml" filepath="$PROJECT_DIR$/microservice-delivery/microservice-delivery.iml" />
       <module fileurl="file://$PROJECT_DIR$/microsservice-storage/microsservice-storage.iml" filepath="$PROJECT_DIR$/microsservice-storage/microsservice-storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/microsservices-delivery.iml" filepath="$PROJECT_DIR$/.idea/microsservices-delivery.iml" />
-      <module fileurl="file://$PROJECT_DIR$/microsservices-delivery/mymoney.iml" filepath="$PROJECT_DIR$/microsservices-delivery/mymoney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-orders/orders.iml" filepath="$PROJECT_DIR$/microservice-orders/orders.iml" />
       <module fileurl="file://$PROJECT_DIR$/microsservices-products/products.iml" filepath="$PROJECT_DIR$/microsservices-products/products.iml" />
     </modules>
   </component>

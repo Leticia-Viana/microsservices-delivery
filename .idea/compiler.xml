@@ -7,16 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mymoney" />
+        <module name="orders" />
         <module name="microsservice-storage" />
-        <module name="products" />
         <module name="microservice-delivery" />
+        <module name="products" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="microservice-delivery" target="17" />
       <module name="microsservice-storage" target="19" />
       <module name="mymoney" target="11" />
+      <module name="orders" target="11" />
       <module name="products" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -25,6 +26,7 @@
       <module name="microservice-delivery" options="-parameters" />
       <module name="microsservice-storage" options="-parameters" />
       <module name="mymoney" options="-parameters" />
+      <module name="orders" options="-parameters" />
       <module name="products" options="-parameters" />
     </option>
   </component>
