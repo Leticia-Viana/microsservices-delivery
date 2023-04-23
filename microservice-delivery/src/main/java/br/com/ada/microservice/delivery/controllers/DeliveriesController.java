@@ -1,5 +1,6 @@
 package br.com.ada.microservice.delivery.controllers;
 
+import br.com.ada.microservice.delivery.model.dto.OrderRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,16 +27,16 @@ public class DeliveriesController {
 	@Autowired
 	private DeliveriesService deliveryService;
 	
-	@PostMapping("/insertDeliveries")
-	public ResponseEntity<DeliveriesResponseDTO> insertDeliveries(@RequestBody final DeliveriesRequestDTO deliveriesRequest){
+	@PostMapping()
+	public ResponseEntity<DeliveriesResponseDTO> insertDeliveries(@RequestBody final OrderRequestDto orderRequestDto){
 		log.info("- DeliveriesController --> Initialized insertDeliveries...");
-		return ResponseEntity.status(HttpStatus.CREATED).body(deliveryService.saveDeliveries(deliveriesRequest));
+		return ResponseEntity.status(HttpStatus.CREATED).body(deliveryService.saveDeliveries(orderRequestDto));
 	}
 	
-	@PatchMapping("{id}")
-	public ResponseEntity<DeliveriesResponseDTO> updateDeliveries(@PathVariable("id") Long id, @RequestBody DeliveriesRequestDTO deliveriesRequest) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(deliveryService.updateDeliveries(id, deliveriesRequest));
-	}
+//	@PatchMapping("{id}")
+//	public ResponseEntity<DeliveriesResponseDTO> updateDeliveries(@PathVariable("id") Long id, @RequestBody DeliveriesRequestDTO deliveriesRequest) {
+//		return ResponseEntity.status(HttpStatus.CREATED).body(deliveryService.updateDeliveries(id, deliveriesRequest));
+//	}
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<DeliveriesResponseDTO> deleteDeliveries(@PathVariable("id") Long id) {

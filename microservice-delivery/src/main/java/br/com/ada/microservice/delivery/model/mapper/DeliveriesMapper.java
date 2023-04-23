@@ -14,41 +14,48 @@ import br.com.ada.microservice.delivery.model.entity.DeliveriesEntity;
 @Service
 public class DeliveriesMapper {
 
-	public DeliveriesResponseDTO dtoResponseToEntity(DeliveriesEntity deliveriesEntity) {
+//	public DeliveriesResponseDTO dtoResponseToEntity(DeliveriesEntity deliveriesEntity) {
+//		if(Objects.isNull(deliveriesEntity)) return null;
+//
+//		return DeliveriesResponseDTO.builder()
+//				.deliver(deliveriesEntity.getDeliveryAddress())
+//				.list_orders(deliveriesEntity.getClientName())
+//				.build();
+//	}
+
+	public DeliveriesResponseDTO entityToResponse(DeliveriesEntity deliveriesEntity){
 		if(Objects.isNull(deliveriesEntity)) return null;
-		
+
 		return DeliveriesResponseDTO.builder()
-				.deliver(deliveriesEntity.getDeliveryAddress())
-				.list_orders(deliveriesEntity.getClientName())
-				.build();
+				.id(deliveriesEntity.getId()).build();
 	}
 	
-	public DeliveriesEntity dtoToEntity(DeliveriesRequestDTO deliveriesDTO){
-        if (Objects.isNull(deliveriesDTO)) return null;
+//	public DeliveriesEntity dtoToEntity(DeliveriesRequestDTO deliveriesDTO){
+//        if (Objects.isNull(deliveriesDTO)) return null;
+//
+//        return  DeliveriesEntity.builder()
+//                .deliveryAddress(deliveriesDTO.getDeliveryAddress())
+//                .clientName(deliveriesDTO.getClientName())
+//                .build();
+//    }
+//
+//    public DeliveriesResponseDTO requestDtoToResponse(DeliveriesRequestDTO deliveriesDTO){
+//        if (Objects.isNull(deliveriesDTO)) {
+//            return null;
+//        } else {
+//            return DeliveriesResponseDTO.builder()
+//                    .deliveryAddress(deliveriesDTO.getDeliveryAddress())
+//                    .clientName(deliveriesDTO.getClientName())
+//                    .build();
+//        }
+//    }
 
-        return  DeliveriesEntity.builder()
-                .deliveryAddress(deliveriesDTO.getDeliveryAddress())
-                .clientName(deliveriesDTO.getClientName())
-                .build();
-    }
-
-    public DeliveriesResponseDTO requestDtoToResponse(DeliveriesRequestDTO deliveriesDTO){
-        if (Objects.isNull(deliveriesDTO)) {
-            return null;
-        } else {
-            return DeliveriesResponseDTO.builder()
-                    .deliveryAddress(deliveriesDTO.getDeliveryAddress())
-                    .clientName(deliveriesDTO.getClientName())
-                    .build();
-        }
-    }
-
-    public List<DeliveriesResponseDTO> listDeliveriesResponse(List<DeliveriesEntity> deliveriesEntityList){
-        if (Objects.isNull(deliveriesEntityList)) return new ArrayList<>();
-
-        return deliveriesEntityList.stream()
-                .map(this::dtoResponseToEntity)
-                .collect(Collectors.toList());
-    }
+//    public List<DeliveriesResponseDTO> listDeliveriesResponse(List<DeliveriesEntity> deliveriesEntityList){
+//        if (Objects.isNull(deliveriesEntityList)) return new ArrayList<>();
+//
+//        return deliveriesEntityList.stream()
+//                .map(this::dtoResponseToEntity)
+//                .collect(Collectors.toList());
+//    }
 
 }
