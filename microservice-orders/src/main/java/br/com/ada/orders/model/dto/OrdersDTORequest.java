@@ -22,6 +22,6 @@ public class OrdersDTORequest {
     private String deliveryAddress;
 
     @NotEmpty(message = "Enter the products, it cannot be null")
-    private List<ProductEntity> listProducts;
+    private List<ProductsRequestDTO> productsRequestDTOList;
 
 }

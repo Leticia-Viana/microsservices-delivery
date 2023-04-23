@@ -1,6 +1,7 @@
 package com.ada.microsservicestorage.controller;
 
 
+import com.ada.microsservicestorage.dto.DecreseRequestDTO;
 import com.ada.microsservicestorage.dto.ProductAddRequestDTO;
 import com.ada.microsservicestorage.dto.ProductDTO;
 import com.ada.microsservicestorage.dto.ProductStorageResponseDTO;
@@ -42,10 +43,10 @@ public class StorageController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<ProductStorageResponseDTO> decreaseProduct(@PathVariable Long id, @RequestBody ProductDTO delivery) {
+    public ResponseEntity<ProductStorageResponseDTO> decreaseProduct(@PathVariable Long id, @RequestBody DecreseRequestDTO decreseRequestDTO) {
         log.info("- StorageController --> Initialized decreaseProduct...");
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(storageService.decreaseProduct(id, delivery.toEntity()));
+            return ResponseEntity.status(HttpStatus.OK).body(storageService.decreaseProduct(id, decreseRequestDTO));
         } catch (ProductStorageNotFoundError productStorageNotFoundError){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

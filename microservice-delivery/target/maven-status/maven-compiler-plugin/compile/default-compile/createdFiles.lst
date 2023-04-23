@@ -1,0 +1,17 @@
+br\com\ada\microservice\delivery\controllers\DeliveriesController.class
+br\com\ada\microservice\delivery\model\mapper\DeliveriesMapper.class
+br\com\ada\microservice\delivery\MicroserviceDeliveryApplication.class
+br\com\ada\microservice\delivery\model\entity\DeliveriesEntity.class
+br\com\ada\microservice\delivery\services\impls\DeliveriesServiceImpl.class
+br\com\ada\microservice\delivery\services\interfaces\DeliveriesService.class
+br\com\ada\microservice\delivery\repositories\DeliveriesRepository.class
+br\com\ada\microservice\delivery\model\dto\DeliveriesRequestDTO.class
+br\com\ada\microservice\delivery\config\SwaggerConfig.class
+br\com\ada\microservice\delivery\model\dto\ProductsRequestDTO$ProductsRequestDTOBuilder.class
+br\com\ada\microservice\delivery\exceptions\StandardError.class
+br\com\ada\microservice\delivery\model\entity\DeliveriesEntity$DeliveriesEntityBuilder.class
+br\com\ada\microservice\delivery\model\dto\ProductsRequestDTO.class
+br\com\ada\microservice\delivery\model\dto\DeliveriesRequestDTO$DeliveriesRequestDTOBuilder.class
+br\com\ada\microservice\delivery\model\dto\DeliveriesResponseDTO$DeliveriesResponseDTOBuilder.class
+br\com\ada\microservice\delivery\model\dto\DeliveriesResponseDTO.class
+br\com\ada\microservice\delivery\exceptions\ResourceExceptionHandler.class
