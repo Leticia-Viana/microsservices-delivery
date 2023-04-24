@@ -1,6 +1,8 @@
 package br.com.ada.microservice.delivery.controllers;
 
 import br.com.ada.microservice.delivery.model.dto.OrderRequestDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import br.com.ada.microservice.delivery.services.interfaces.DeliveriesService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/deliveries")
 @Slf4j
@@ -26,6 +30,12 @@ public class DeliveriesController {
 
 	@Autowired
 	private DeliveriesService deliveryService;
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
 	
 	@PostMapping()
 	public ResponseEntity<DeliveriesResponseDTO> insertDeliveries(@RequestBody final OrderRequestDto orderRequestDto){
