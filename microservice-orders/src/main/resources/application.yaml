@@ -3,6 +3,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    type: redis
+
   sql:
     init:
       mode: NEVER

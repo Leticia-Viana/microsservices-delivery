@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -13,11 +14,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="microservice-delivery" target="17" />
-      <module name="microsservice-storage" target="19" />
       <module name="mymoney" target="11" />
-      <module name="orders" target="11" />
-      <module name="products" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -11,8 +11,9 @@ import br.com.ada.orders.service.interfaces.OrdersService;
 import br.com.ada.orders.sms.SendNewOrderToDelivey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.*;
@@ -59,6 +60,8 @@ public class OrdersServiceImpl implements OrdersService {
         return dtoResponse;
     }
 
+
+    @Cacheable(value = "orders")
     @Override
     public List<OrdersDTOResponse> getAllOrders() {
         log.info("- OrdersServiceImpl --> Initialized getAllOrders...");
