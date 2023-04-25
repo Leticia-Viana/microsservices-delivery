@@ -11,15 +11,14 @@ import br.com.ada.orders.service.interfaces.OrdersService;
 import br.com.ada.orders.sms.SendNewOrderToDelivey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
-import javax.transaction.*;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
